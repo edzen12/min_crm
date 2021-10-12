@@ -1,0 +1,152 @@
+.mainCont {
+  min-height: 800px;
+  display: grid;
+  grid-template: 1fr / 40% 60%;
+  grid-column-gap: 10px;
+}
+
+.gridCont {
+  padding: 0 15px;
+}
+
+.gridCell {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 10px;
+  border-bottom: 1px solid rgb(161, 161, 161);
+  overflow-wrap: break-word;
+}
+
+.gridP {
+  text-align: center;
+  font-size: 20px;
+  margin: 0;
+}
+
+.secondPart_mainCont {
+  padding: 20px 15px;
+}
+
+.secontPart_cont {
+  margin: 50px 0;
+}
+
+.secondPart_cell {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(161, 161, 161);
+  padding: 0 15px;
+}
+
+.secondPart_cell2 {
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(161, 161, 161);
+  padding: 0 15px;
+}
+
+.secondPart_miniCont {
+  display: flex;
+}
+
+.secondPart_h5 {
+  margin: 0 0 0 15px;
+  font-size: 20px;
+}
+
+.secondPart_p {
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.secondPart_miniCont {
+  display: flex;
+}
+
+.secondPart_btn {
+  color: white !important;
+}
+
+.mediaCont {
+  max-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.secondPart_minImg {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.mediaLink {
+  font-size: 12px;
+}
+
+.secondPart_fileMiddleCont {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.h4 {
+  margin-bottom: 20px;
+}
+
+.courseActionBtns {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media (max-width: 1280px) {
+  .mainCont {
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 800px) {
+  .gridCell {
+    height: 50px;
+    border-bottom: 1px solid rgb(161, 161, 161);
+  }
+  .secondPart_minImg {
+    display: none;
+  }
+  .secondPart_cell2 {
+    height: 70px;
+    padding: 0 15px;
+  }
+  .secondPart_fileMiddleCont {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .h4 {
+    font-size: 20px;
+  }
+  .secondPart_h5 {
+    font-size: 16px;
+  }
+  .secondPart_p {
+    font-size: 14px;
+  }
+  .gridH3 {
+    font-size: 18px;
+  }
+  .gridP {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,36 @@
+.mainCont {
+    display: grid;
+    grid-template: 1fr / 60% 40%;
+    justify-content: space-around;
+}
+
+.partFirst {
+    display: grid;
+    grid-template: 1fr .3fr auto .1fr / 1fr;
+    grid-row-gap: 20px;
+}
+
+.imgCont {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.h2 {
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+}
+
+.img {
+    max-height: 300px;
+    object-fit: contain;
+}
+
+@media(max-width: 1202px) {
+    .mainCont {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,52 @@
+.mainPieChart{
+  margin-top: 50px !important;
+  height: 450px !important;
+}
+
+.mainLineChart{
+  margin-top: 50px !important;
+  margin-bottom: 80px !important;
+  height: 450px !important;
+}
+
+
+.mainBarChart{
+  margin-top: 80px !important;
+  height: 450px !important;
+}
+
+.pieChart{
+  height: 450px !important;
+  margin-top: 50px !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeSwitcher{
+  margin-left: auto; 
+  width: 250px;
+  display: flex; 
+}
+
+@media only screen and (max-width: 500px){
+  .pieChart{
+    width: 350px !important;
+    margin-top: 70px !important;
+    flex-direction: column-reverse !important;
+  }
+
+  .mainLineChart{
+    width: 350px !important;
+    margin-top: 25px !important;
+  }
+
+  .mainPieChart{
+    width: 350px !important;
+    margin-top: 25px !important;
+  }
+
+  .timeSwitcher{
+    margin: 0 auto !important;
+  }
+
+}

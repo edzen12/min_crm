@@ -1,0 +1,39 @@
+.mainCont {
+    padding: 18px;
+}
+
+.fieldCont {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* justify-content: space-around;    */
+    padding: 8px;
+    margin: 25px 0;
+}
+
+.fieldCont_inputFields {
+    margin: 5px;
+}
+
+.addRowBtn {
+    display: flex;
+    justify-content: center;
+}
+
+.submitBtn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media(max-width:576px) {
+    .mainCont {
+        padding: 8px;
+    }
+    .fieldCont {
+        padding: 8px 2px;
+        margin: 15px 0;
+    }
+    .fieldCont_inputFields {
+        margin: 5px 0;
+    }
+}

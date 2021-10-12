@@ -1,0 +1,85 @@
+version: '3.7'
+
+services:
+    redis:
+      image: redis:latest
+      container_name: redis_server
+      ports:
+        - '6379:6379'
+      networks:
+        - my-network
+
+    db:
+      image: postgres:12.0-alpine
+      volumes:
+        - postgres_data:/var/lib/postgresql/data/
+      networks:
+        - my-network
+      environment:
+        - POSTGRES_USER=crm
+        - POSTGRES_PASSWORD=crm
+        - POSTGRES_DB=crm
+
+    backend:
+      restart: unless-stopped
+      build:
+        context: .
+        dockerfile: ./docker/backend/Dockerfile
+      volumes:
+          - static_volume:/app/backend/crm/staticfiles
+          - media_volume:/app/backend/crm/media
+      entrypoint: /app/docker/backend/wsgi-entrypoint.sh
+      links:
+        - redis
+      networks:
+        - my-network
+      depends_on:
+        - db
+        - redis
+
+    celery:
+      build:
+        context: .
+        dockerfile: ./docker/backend/Dockerfile
+      container_name: celery_crm
+      command: bash -c 'cd /app/backend/crm/ && celery -A crm worker -l info'
+      networks:
+        - my-network
+      depends_on:
+        - redis
+      restart: always
+
+    nginx:
+      restart: unless-stopped
+      build:
+        context: .
+        dockerfile: ./docker/nginx/Dockerfile
+      ports:
+        - 80:80
+        - 443:443
+      volumes:
+        - ./docker/nginx/prod:/etc/nginx/conf.d
+        - static_volume:/app/backend/crm/staticfiles
+        - media_volume:/app/backend/crm/media
+        - ./docker/nginx/certbot/conf:/etc/letsencrypt
+        - ./docker/nginx/certbot/www:/var/www/certbot
+      networks:
+        - my-network
+      depends_on:
+        - backend
+
+    certbot:
+      image: certbot/certbot
+      restart: unless-stopped
+      volumes:
+        - ./docker/nginx/certbot/conf:/etc/letsencrypt
+        - ./docker/nginx/certbot/www:/var/www/certbot
+      entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+volumes:
+  static_volume:
+  media_volume:
+  postgres_data:
+
+networks:
+  my-network:

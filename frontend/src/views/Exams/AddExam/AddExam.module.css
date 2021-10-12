@@ -1,0 +1,15 @@
+.addBtn{
+  position: fixed !important;
+  top: 50vh !important;
+  right: 35px !important;
+  width: 35px !important;
+  height: 35px !important;
+}
+ 
+
+@media (max-width: 576px) {
+  .addBtn{
+    top: 45vh !important;
+    right: 20px !important;
+  }
+}
